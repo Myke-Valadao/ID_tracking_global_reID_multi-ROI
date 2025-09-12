@@ -68,7 +68,7 @@ yolo help
 ## Command-Line Usage
 
 ```bash
-python persistent_id_tracking.py \
+python id_tracking_global_reid_multi-roi.py \
   --source <0|path/to/video|path/to/image_or_dir> \
   [--weights yolo11n.pt] \
   [--tracker bytetrack.yaml] \
@@ -186,7 +186,7 @@ Columns:
 
 ### Webcam (GPU), draw ROIs, save video + CSV
 ```bash
-python persistent_id_tracking.py \
+python id_tracking_global_reid_multi-roi.py \
   --source 0 \
   --weights yolo11n.pt \
   --tracker bytetrack.yaml \
@@ -204,7 +204,7 @@ python persistent_id_tracking.py \
 
 ### Video file (CPU), load ROIs from JSON
 ```bash
-python persistent_id_tracking.py \
+python id_tracking_global_reid_multi-roi.py \
   --source /path/to/video.mp4 \
   --device cpu \
   --roi-mode file \
@@ -215,7 +215,7 @@ python persistent_id_tracking.py \
 
 ### Headless server (no GUI): force ROI from file
 ```bash
-python persistent_id_tracking.py \
+python id_tracking_global_reid_multi-roi.py \
   --source /data/cam_feed.mp4 \
   --device cuda:0 \
   --roi-mode file \
@@ -226,7 +226,7 @@ python persistent_id_tracking.py \
 
 ### Tighter ReID matching + shorter memory
 ```bash
-python persistent_id_tracking.py \
+python id_tracking_global_reid_multi-roi.py \
   --source 0 \
   --match-thresh 0.75 \
   --gallery-ttl 180
@@ -234,7 +234,7 @@ python persistent_id_tracking.py \
 
 ### Lighter ReID backbone for speed
 ```bash
-python persistent_id_tracking.py \
+python id_tracking_global_reid_multi-roi.py \
   --source 0 \
   --emb-backbone mobilenetv3_small
 ```
@@ -317,10 +317,10 @@ This README documents a script that depends on third-party libraries. Please che
 ## Short Reference (Cheat Sheet)
 
 - Run webcam on GPU, draw ROIs, save:  
-  `python persistent_id_tracking.py --source 0 --device cuda:0 --roi-mode interactive --save out.mp4 --log-csv run.csv`
+  `python id_tracking_global_reid_multi-roi.py --source 0 --device cuda:0 --roi-mode interactive --save out.mp4 --log-csv run.csv`
 
 - Load ROIs from JSON, restrict classes, CPU:  
-  `python persistent_id_tracking.py --source video.mp4 --device cpu --roi-mode file --roi-file rois.json --class-filter "person"`
+  `python id_tracking_global_reid_multi-roi.py --source video.mp4 --device cpu --roi-mode file --roi-file rois.json --class-filter "person"`
 
 - Faster ReID:  
   `--emb-backbone resnet18` or `--emb-backbone mobilenetv3_small`
