@@ -304,7 +304,6 @@ A: Start with **ByteTrack** for simplicity and speed. If you need appearance cue
 ## License
 
 This README documents a script that depends on third-party libraries. Please check each dependency’s license (e.g., Ultralytics, PyTorch, Torchvision, OpenCV).  
-Your own code is under your chosen license (add a `LICENSE` file if needed).
 
 ---
 
