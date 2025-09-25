@@ -69,7 +69,7 @@ yolo help
 
 ```bash
 python id_tracking_global_reid_multi-roi.py \
-  --source <0|path/to/video|path/to/image_or_dir> \
+  --sources "<0, path/to/video|path/to/image_or_dir>" \
   [--weights yolo11n.pt] \
   [--tracker bytetrack.yaml] \
   [--device cuda:0|cpu] \
