@@ -89,7 +89,7 @@ python id_tracking_global_reid_multi-roi.py \
 
 ### Arguments
 
-- `--source` **(required)**: Camera index (e.g., `0`) or a path to video/image (a directory is also accepted by Ultralytics).
+- `--sources` **(required)**: Camera index (e.g., `0, 1`) or a path to video/image (a directory is also accepted by Ultralytics).
 - `--weights`: YOLO weights; default `yolo11n.pt`.
 - `--tracker`: Tracker config YAML (`bytetrack.yaml` by default). Other options: `botsort.yaml`, `ocsort.yaml`, `strongsort.yaml`.
 - `--device`: `cuda:0` or `cpu`. If omitted, auto-selects GPU if available, otherwise CPU.
@@ -187,7 +187,7 @@ Columns:
 ### Webcam (GPU), draw ROIs, save video + CSV
 ```bash
 python id_tracking_global_reid_multi-roi.py \
-  --source 0 \
+  --sources "0, 1" \
   --weights yolo11n.pt \
   --tracker bytetrack.yaml \
   --device cuda:0 \
@@ -205,7 +205,7 @@ python id_tracking_global_reid_multi-roi.py \
 ### Video file (CPU), load ROIs from JSON
 ```bash
 python id_tracking_global_reid_multi-roi.py \
-  --source /path/to/video.mp4 \
+  --sources "0, /path/to/video.mp4" \
   --device cpu \
   --roi-mode file \
   --roi-file rois.json \
@@ -216,7 +216,7 @@ python id_tracking_global_reid_multi-roi.py \
 ### Headless server (no GUI): force ROI from file
 ```bash
 python id_tracking_global_reid_multi-roi.py \
-  --source /data/cam_feed.mp4 \
+  --sources "0, /data/cam_feed.mp4" \
   --device cuda:0 \
   --roi-mode file \
   --roi-file /data/rois.json \
@@ -227,7 +227,7 @@ python id_tracking_global_reid_multi-roi.py \
 ### Tighter ReID matching + shorter memory
 ```bash
 python id_tracking_global_reid_multi-roi.py \
-  --source 0 \
+  --sources "0, 1" \
   --match-thresh 0.75 \
   --gallery-ttl 180
 ```
@@ -235,7 +235,7 @@ python id_tracking_global_reid_multi-roi.py \
 ### Lighter ReID backbone for speed
 ```bash
 python id_tracking_global_reid_multi-roi.py \
-  --source 0 \
+  --sources "0, 1" \
   --emb-backbone mobilenetv3_small
 ```
 
@@ -317,10 +317,10 @@ This README documents a script that depends on third-party libraries. Please che
 ## Short Reference (Cheat Sheet)
 
 - Run webcam on GPU, draw ROIs, save:  
-  `python id_tracking_global_reid_multi-roi.py --source 0 --device cuda:0 --roi-mode interactive --save out.mp4 --log-csv run.csv`
+  `python id_tracking_global_reid_multi-roi.py --sources "0, 1" --device cuda:0 --roi-mode interactive --save out.mp4 --log-csv run.csv`
 
 - Load ROIs from JSON, restrict classes, CPU:  
-  `python id_tracking_global_reid_multi-roi.py --source video.mp4 --device cpu --roi-mode file --roi-file rois.json --class-filter "person"`
+  `python id_tracking_global_reid_multi-roi.py --sources "0, video.mp4" --device cpu --roi-mode file --roi-file rois.json --class-filter "person"`
 
 - Faster ReID:  
   `--emb-backbone resnet18` or `--emb-backbone mobilenetv3_small`
